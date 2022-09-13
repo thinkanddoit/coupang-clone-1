@@ -1,15 +1,42 @@
-import axios from "axios";
-import { useQuery } from "react-query";
+import React, { Suspense } from "react";
+import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
-export default function ProductListPage() {
-  const { data } = useQuery("products", () =>
-    axios.get(
-      process.env.NEXT_PUBLIC_API_HOST +
-        "/products?offset=0&limit=20&sorter=bestAsc"
-    )
-  );
+import { Loading, Pagination } from "@components/Common";
+import { SearchSortingBar } from "@components/Products";
 
-  console.log(data);
+import {
+  QueryTypeForGetProductDataList,
+  RouterAndQueryPropsType,
+} from "@@types/products";
 
-  return <>상품 목록 페이지입니다.</>;
+const ProductsList = dynamic(
+  () => import("@components/Products/ProductsList/ProductsList"),
+  { ssr: false }
+);
+
+export interface PreRenderingPropsType {
+  query: Partial<QueryTypeForGetProductDataList>;
 }
+export default function ProductListPage({ query }: PreRenderingPropsType) {
+  const router = useRouter();
+  const props: RouterAndQueryPropsType = {
+    query: { ...query, ...router.query },
+    router: router,
+  };
+
+  return (
+    <>
+      <SearchSortingBar {...props} />
+      <Suspense fallback={<Loading />}>
+        <ProductsList {...props} />
+      </Suspense>
+      <Pagination {...props} />
+    </>
+  );
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return { props: { query: context.query } };
+};
