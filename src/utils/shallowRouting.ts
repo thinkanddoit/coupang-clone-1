@@ -1,4 +1,4 @@
-import { QueryTypeForGetProductDataList } from "@@types/products";
+import { QueryTypeForGetProductDataList } from "@customTypes/products";
 import { NextRouter } from "next/router";
 
 export const shallowRouting = (

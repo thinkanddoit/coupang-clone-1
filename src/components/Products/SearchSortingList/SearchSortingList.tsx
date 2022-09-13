@@ -1,6 +1,6 @@
+import { fillInitialQuery, shallowRouting } from "@utils";
+import { RouterAndQueryPropsType } from "@customTypes/products";
 import SearchSortingItem from "./SearchSortingItem/SearchSortingItem";
-import { fillInitialQuery, shallowRouting } from "utils";
-import { RouterAndQueryPropsType } from "@@types/products";
 import * as S from "./SearchSortingList.style";
 
 interface CaseType {

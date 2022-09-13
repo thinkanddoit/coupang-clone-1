@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { ProductsService } from "@services";
-import { QueryTypeForGetProductDataList } from "types/products";
+import { QueryTypeForGetProductDataList } from "@customTypes/products";
 
 export const useProducts = (
   queries: Partial<QueryTypeForGetProductDataList>

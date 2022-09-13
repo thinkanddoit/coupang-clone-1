@@ -4,7 +4,7 @@ import {
   ProductDataListType,
   ProductDataType,
   RouterAndQueryPropsType,
-} from "@@types/products";
+} from "@customTypes/products";
 import * as S from "./ProductsList.style";
 
 const ProductsList = ({ query }: RouterAndQueryPropsType) => {

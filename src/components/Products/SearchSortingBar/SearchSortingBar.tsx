@@ -1,4 +1,4 @@
-import { RouterAndQueryPropsType } from "@@types/products";
+import { RouterAndQueryPropsType } from "@customTypes/products";
 import { ListSizeOptionBox, SearchSortingList } from "@components/Products";
 import * as S from "./SearchSortingBar.style";
 

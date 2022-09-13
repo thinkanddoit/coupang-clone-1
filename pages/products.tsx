@@ -9,7 +9,7 @@ import { SearchSortingBar } from "@components/Products";
 import {
   QueryTypeForGetProductDataList,
   RouterAndQueryPropsType,
-} from "@@types/products";
+} from "@customTypes/products";
 
 const ProductsList = dynamic(
   () => import("@components/Products/ProductsList/ProductsList"),

@@ -1,4 +1,4 @@
-import { QueryTypeForGetProductDataList } from "@@types/products";
+import { QueryTypeForGetProductDataList } from "@customTypes/products";
 
 export const fillInitialQuery = (
   query: Partial<QueryTypeForGetProductDataList>

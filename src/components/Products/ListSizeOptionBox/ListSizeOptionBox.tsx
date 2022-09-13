@@ -1,6 +1,6 @@
+import { fillInitialQuery, shallowRouting } from "@utils";
+import { RouterAndQueryPropsType } from "@customTypes/products";
 import ListSizeOptionItem from "./ListSizeOptionItem/ListSizeOptionItem";
-import { fillInitialQuery, shallowRouting } from "utils";
-import { RouterAndQueryPropsType } from "@@types/products";
 import * as S from "./ListSizeOptionBox.style";
 
 interface CaseType {

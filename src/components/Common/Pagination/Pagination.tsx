@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { shallowRouting, fillInitialQuery } from "utils";
-import { RouterAndQueryPropsType } from "@@types/products";
-import OverPageAlert from "./OverPageAlert/OverPageAlert";
+import { shallowRouting, fillInitialQuery } from "@utils";
+import { RouterAndQueryPropsType } from "@customTypes/products";
+import OverPageAlert from "./OverPageAlert/OverPageAlert";
 import * as S from "./Pagination.style";
 
 const Pagination = ({ router, query }: RouterAndQueryPropsType) => {

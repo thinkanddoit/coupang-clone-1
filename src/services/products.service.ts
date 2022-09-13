@@ -1,5 +1,5 @@
 import axios from "axios";
-import { QueryTypeForGetProductDataList } from "types/products";
+import { QueryTypeForGetProductDataList } from "@customTypes/products";
 
 class ProductsService {
   async getProducts({
