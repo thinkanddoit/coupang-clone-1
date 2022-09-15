@@ -4,7 +4,11 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
 import { Loading, Pagination } from "@components/Common";
-import { SearchSortingBar } from "@components/Products";
+import {
+  ListSizeOptionBox,
+  SearchSortingBar,
+  SearchSortingList,
+} from "@components/Products";
 
 import {
   QueryTypeForGetProductDataList,
@@ -28,7 +32,10 @@ export default function ProductListPage({ query }: PreRenderingPropsType) {
 
   return (
     <>
-      <SearchSortingBar {...props} />
+      <SearchSortingBar>
+        <SearchSortingList {...props} />
+        <ListSizeOptionBox {...props} />
+      </SearchSortingBar>
       <Suspense fallback={<Loading />}>
         <ProductsList {...props} />
       </Suspense>
