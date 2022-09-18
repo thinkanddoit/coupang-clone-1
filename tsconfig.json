@@ -19,7 +19,7 @@
       "@pages/*": ["../pages/*"],
       "@styles/*": ["../styles/*"],
       "@components/*": ["components/*"],
-      "@constants": ["constants"],
+      "@constants/*": ["constants/*"],
       "@customTypes/*": ["customTypes/*"],
       "@hooks": ["hooks"],
       "@services": ["services"],

@@ -1,5 +1,5 @@
-import { AuthService } from "@services";
-import { Router, useRouter } from "next/router";
+import { AuthService, CartService } from "@services";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const LoginPage = () => {
@@ -36,8 +36,9 @@ const LoginPage = () => {
       <button
         name="로그인"
         onClick={() => {
-          AuthService.login(email, password);
-          router.push("/cart");
+          AuthService.login(email, password).then(() => {
+            CartService.getCartItem().then(() => router.push("/cart"));
+          });
         }}
       >
         로그인
