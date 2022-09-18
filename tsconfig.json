@@ -19,9 +19,10 @@
       "@pages/*": ["../pages/*"],
       "@styles/*": ["../styles/*"],
       "@components/*": ["components/*"],
+      "@constants": ["constants"],
+      "@customTypes/*": ["customTypes/*"],
       "@hooks": ["hooks"],
       "@services": ["services"],
-      "@types/*": ["types/*"],
       "@utils/*": ["utils/*"]
     }
   },
