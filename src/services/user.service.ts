@@ -9,7 +9,7 @@ class UserService extends Service {
     }
 
     const { data } = await HttpUtil.get("/users/me", {
-      ...this.getAuthHeaders(accessToken),
+      ...super.getAuthHeaders(accessToken),
     });
 
     return data;
