@@ -20,7 +20,7 @@ const PurchaseTypeSelector = ({
       >{`일반구매 (${normalCount})`}</S.Item>
       <S.Item
         selected={selected === "regularDelivery"}
-      >{`정기배송 (${normalCount})`}</S.Item>
+      >{`정기배송 (${rdCount})`}</S.Item>
     </S.Container>
   );
 };
