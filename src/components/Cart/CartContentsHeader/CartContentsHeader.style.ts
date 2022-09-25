@@ -4,16 +4,16 @@ type ContainerProps = {
   isEmpty: boolean;
 };
 export const Container = styled.div<ContainerProps>`
+  height: 40px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background: #fafafa;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  height: 40px;
+  padding-left: ${({ isEmpty }) => (isEmpty ? "145px" : "0")};
   font-size: 13px;
   font-weight: bold;
-  padding-left: ${({ isEmpty }) => (isEmpty ? "145px" : "0")};
 `;
 
 type ItemProps = {

@@ -1,18 +1,17 @@
 import * as S from "./CartContentsHeader.style";
 
-type PurchaseType = "normal" | "regularDelivery";
-
 interface PropsType {
   isEmpty: boolean;
-  isAllChecked?: boolean;
+  allChecked: boolean;
+  onChange: (e: any) => void;
 }
 
-const CartContentsHeader = ({ isEmpty, isAllChecked }: PropsType) => {
+const CartContentsHeader = ({ isEmpty, allChecked, onChange }: PropsType) => {
   return (
     <S.Container isEmpty={isEmpty}>
       {!isEmpty && (
         <S.AllCheckBoxContainer>
-          <input type={"checkbox"} />
+          <input type={"checkbox"} checked={allChecked} onChange={onChange} />
           <S.Item marginLeft="7px">전체선택</S.Item>
         </S.AllCheckBoxContainer>
       )}
