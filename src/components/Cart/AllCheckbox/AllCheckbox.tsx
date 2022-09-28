@@ -16,11 +16,17 @@ const AllCheckbox = ({
   onChange,
 }: PropsType) => {
   const { isLoading, mutate } = useDeleteCartItems();
+
   const deleteItems = (ids: number[]) => {
-    if (window.confirm("선택한 상품을 삭제하시겠습니까?")) {
-      mutate(ids);
+    if (!ids.length) {
+      alert("삭제할 상품을 선택해주세요.");
+    } else {
+      if (window.confirm("선택한 상품을 삭제하시겠습니까?")) {
+        mutate(ids);
+      }
     }
   };
+
   return (
     <S.Container>
       {isLoading && <Loading />}
