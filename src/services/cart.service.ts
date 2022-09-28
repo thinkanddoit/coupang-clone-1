@@ -8,9 +8,10 @@ class CartService extends Service {
       return;
     }
 
-    return await HttpUtil.get("/cart", {
+    const { data } = await HttpUtil.get("/cart", {
       ...super.getAuthHeaders(accessToken),
     });
+    return data;
   }
 
   async resetCartItem() {
@@ -25,6 +26,16 @@ class CartService extends Service {
         ...super.getAuthHeaders(accessToken),
       }
     );
+  }
+
+  async deleteCartItem(id: number) {
+    const accessToken = TokenUtil.getToken("access");
+    if (!accessToken) {
+      return;
+    }
+    return await HttpUtil.delete(`/cart-items/${id}`, {
+      ...super.getAuthHeaders(accessToken),
+    });
   }
 }
 
