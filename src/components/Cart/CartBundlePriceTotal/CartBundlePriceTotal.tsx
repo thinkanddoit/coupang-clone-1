@@ -11,7 +11,7 @@ interface PropsType {
 
 const CartBundlePriceTotal = ({ type, checkedCartData }: PropsType) => {
   const allPrice = checkedCartData?.reduce(
-    (a, c) => a + c.product.originalPrice,
+    (a, c) => a + c.product.originalPrice * c.quantity,
     0
   );
   const allShipFee = checkedCartData?.reduce(

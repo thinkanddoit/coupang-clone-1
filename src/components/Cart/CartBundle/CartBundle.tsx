@@ -54,14 +54,15 @@ const CartBundle = ({ cartData, checkedList, onChange }: PropsType) => {
                   </S.CartItemContainer>
                   <S.CartItemContainer>
                     <S.CartItemSpan>
-                      {e.product.originalPrice.toLocaleString()}원
+                      {(e.product.originalPrice * e.quantity).toLocaleString()}
+                      원
                     </S.CartItemSpan>
                     <S.DeleteButton onClick={() => mutate(e.id)} />
                   </S.CartItemContainer>
                 </S.InfoBottomLayout>
               </S.InfoContainer>
               <CartItemPrice
-                price={e.product.originalPrice}
+                price={e.product.originalPrice * e.quantity}
                 name={e.product.name}
                 isRocket={e.product.rocketType === "fresh"}
               />

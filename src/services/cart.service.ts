@@ -37,6 +37,20 @@ class CartService extends Service {
       ...super.getAuthHeaders(accessToken),
     });
   }
+
+  async updateCartItemQuantity(id: number, quantity: number) {
+    const accessToken = TokenUtil.getToken("access");
+    if (!accessToken) {
+      return;
+    }
+    return await HttpUtil.patch(
+      `/cart-items/${id}`,
+      { quantity: quantity },
+      {
+        ...super.getAuthHeaders(accessToken),
+      }
+    );
+  }
 }
 
 export default new CartService();
