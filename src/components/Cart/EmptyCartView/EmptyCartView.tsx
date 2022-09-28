@@ -1,16 +1,9 @@
 import { Loading } from "@components/Common";
-import { CART_ITEM } from "@constants/queryKeys";
-import { CartService } from "@services";
-import { useMutation, useQueryClient } from "react-query";
+import { useResetCartItem } from "../hooks";
 import * as S from "./EmptyCartView.style";
 
 const EmptyCartView = () => {
-  const queryClient = useQueryClient();
-  const { mutate, isLoading } = useMutation(CartService.resetCartItem, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(CART_ITEM);
-    },
-  });
+  const { mutate, isLoading } = useResetCartItem();
   return (
     <S.Container>
       {isLoading && <Loading />}

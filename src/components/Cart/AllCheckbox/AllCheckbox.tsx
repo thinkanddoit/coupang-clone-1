@@ -1,5 +1,5 @@
 import { Loading } from "@components/Common";
-import { useDeleteItems } from "../hooks";
+import { useDeleteCartItems } from "../hooks";
 import * as S from "./AllCheckbox.style";
 
 interface PropsType {
@@ -15,7 +15,7 @@ const AllCheckbox = ({
   checkedList,
   onChange,
 }: PropsType) => {
-  const { isLoading, mutate } = useDeleteItems();
+  const { isLoading, mutate } = useDeleteCartItems();
   const deleteItems = (ids: number[]) => {
     if (window.confirm("선택한 상품을 삭제하시겠습니까?")) {
       mutate(ids);

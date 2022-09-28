@@ -5,7 +5,7 @@ import Image from "next/image";
 import CartItemPrice from "./CartItemPrice/CartItemPrice";
 import CartItemDeliveryDate from "./CartItemDeliveryDate/CartItemDeliveryDate";
 import { Loading, QuantityPicker } from "@components/Common";
-import { useDeleteItem } from "../hooks";
+import { useDeleteCartItem } from "../hooks";
 
 interface PropsType {
   cartData: CartDataType[];
@@ -13,7 +13,7 @@ interface PropsType {
   onChange: (e: any, key: number) => void;
 }
 const CartBundle = ({ cartData, checkedList, onChange }: PropsType) => {
-  const { mutate, isLoading } = useDeleteItem();
+  const { mutate, isLoading } = useDeleteCartItem();
 
   return (
     <>
