@@ -24,6 +24,9 @@ const CartPage = () => {
   const { isLoading, data } = useQuery([CART_ITEM], CartService.getCartItem);
   const cartData: CartDataType[] = data;
 
+  //test용
+  console.log(cartData);
+
   const { checkedList, setCheckedList, onChangeEach, onChangeAll, allChecked } =
     useCheck(cartData);
   const isCartEmpty: boolean = useMemo(() => !cartData?.length, [cartData]);
