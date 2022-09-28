@@ -37,6 +37,7 @@ const LoginPage = () => {
         name="로그인"
         onClick={() => {
           AuthService.login(email, password).then(() => {
+            CartService.resetCartItem();
             CartService.getCartItem().then(() => router.push("/cart"));
           });
         }}
