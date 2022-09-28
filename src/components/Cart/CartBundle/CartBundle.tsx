@@ -50,7 +50,7 @@ const CartBundle = ({ cartData, checkedList, onChange }: PropsType) => {
                     <S.CartItemSpan>
                       {e.product.originalPrice.toLocaleString()}원
                     </S.CartItemSpan>
-                    <QuantityPicker initialQuantity={e.quantity} />
+                    <QuantityPicker quantity={e.quantity} id={e.id} />
                   </S.CartItemContainer>
                   <S.CartItemContainer>
                     <S.CartItemSpan>
