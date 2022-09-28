@@ -16,7 +16,9 @@ const useCheck = (cartData: CartDataType[]) => {
     setCheckedList(e.target.checked ? cartData.map((data) => data.id) : []);
   };
 
-  return { checkedList, onChangeEach, onChangeAll };
+  const allChecked = checkedList.length === cartData?.length;
+
+  return { checkedList, setCheckedList, onChangeEach, onChangeAll, allChecked };
 };
 
 export default useCheck;

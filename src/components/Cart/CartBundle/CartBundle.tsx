@@ -4,17 +4,20 @@ import * as S from "./CartBundle.style";
 import Image from "next/image";
 import CartItemPrice from "./CartItemPrice/CartItemPrice";
 import CartItemDeliveryDate from "./CartItemDeliveryDate/CartItemDeliveryDate";
-import { QuantityPicker } from "@components/Common";
+import { Loading, QuantityPicker } from "@components/Common";
+import { useDeleteItem } from "../hooks";
 
 interface PropsType {
   cartData: CartDataType[];
   checkedList: number[];
   onChange: (e: any, key: number) => void;
 }
-
 const CartBundle = ({ cartData, checkedList, onChange }: PropsType) => {
+  const { mutate, isLoading } = useDeleteItem();
+
   return (
     <>
+      {isLoading && <Loading />}
       {cartData &&
         cartData.map((e) => {
           return (
@@ -53,7 +56,7 @@ const CartBundle = ({ cartData, checkedList, onChange }: PropsType) => {
                     <S.CartItemSpan>
                       {e.product.originalPrice.toLocaleString()}원
                     </S.CartItemSpan>
-                    <S.DeleteButton onClick={() => console.log("delete!")} />
+                    <S.DeleteButton onClick={() => mutate(e.id)} />
                   </S.CartItemContainer>
                 </S.InfoBottomLayout>
               </S.InfoContainer>
