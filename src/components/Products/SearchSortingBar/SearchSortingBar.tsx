@@ -1,13 +1,11 @@
-import { RouterAndQueryPropsType } from "@customTypes/products";
-import { ListSizeOptionBox, SearchSortingList } from "@components/Products";
 import * as S from "./SearchSortingBar.style";
 
-const SearchSortingBar = (props: RouterAndQueryPropsType) => {
+interface PropsType {
+  children: React.ReactNode;
+}
+const SearchSortingBar = (props: PropsType) => {
   return (
-    <S.SearchSortingBarContainer>
-      <SearchSortingList {...props} />
-      <ListSizeOptionBox {...props} />
-    </S.SearchSortingBarContainer>
+    <S.SearchSortingBarContainer>{props.children}</S.SearchSortingBarContainer>
   );
 };
 
