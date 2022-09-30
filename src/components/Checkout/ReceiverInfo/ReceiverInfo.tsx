@@ -6,10 +6,20 @@ import {
   Title,
 } from "@components/Checkout/Common";
 import * as S from "./ReceiverInfo.style";
+import Image from "next/image";
 
 interface PropsType {
   data: AddressType;
 }
+
+const ShipRequestLogo = () => (
+  <Image
+    src={"https://img1a.coupangcdn.com/image/www/common/icon_arrow.gif"}
+    alt={"배송요청사항 로고"}
+    width={"7px"}
+    height={"14px"}
+  />
+);
 
 const ReceiverInfo = ({ data }: PropsType) => {
   return (
@@ -37,7 +47,7 @@ const ReceiverInfo = ({ data }: PropsType) => {
         </TableRow>
         <TableRow title="배송주소">{`${data.base} ${data.detail}`}</TableRow>
         <TableRow title="연락처">{data.phoneNumber}</TableRow>
-        <TableRow title="배송 요청사항">
+        <TableRow title="배송 요청사항" titleLogo={<ShipRequestLogo />}>
           <S.ShipInfoBox>
             <span>문 앞</span>
             <Button title="변경" margin="0 0 0 13px" />
