@@ -12,7 +12,7 @@ const PhoneNumberContents = ({ number }: PropsType) => {
     <S.Container>
       <div>
         <S.Input value={getHyphenPhoneNumber(number)} disabled />
-        <Button title="수정" onClick={() => {}} />
+        <Button title="수정" />
         <S.GreySpan>쿠폰/티켓정보는 구매한 분의 번호로 전송됩니다.</S.GreySpan>
       </div>
       <S.Alert>
