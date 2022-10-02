@@ -4,13 +4,12 @@ import {
   useOrderDispatch,
   useOrderState,
 } from "@components/Checkout/OrderContext";
+import checkoutService from "services/checkout.service";
 
 const CheckoutButton = () => {
   const dispatch = useOrderDispatch();
   const orderRequestBody = useOrderState();
   const { payMethod, mobileCarrier } = orderRequestBody;
-
-  console.log("orderRequestBody", orderRequestBody);
 
   const clickHandler = () => {
     if (payMethod === "mobile") {
@@ -23,7 +22,11 @@ const CheckoutButton = () => {
         window.alert("통신사를 선택해주세요");
       } else if (mobileCarrier === "warning") {
         window.alert("통신사를 선택해주세요");
+      } else {
+        checkoutService.completeOrder(orderRequestBody);
       }
+    } else {
+      checkoutService.completeOrder(orderRequestBody);
     }
   };
   return (
