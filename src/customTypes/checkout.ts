@@ -24,3 +24,21 @@ export interface OrderSheetDataType {
   coupons: CouponType[];
   orderItems: CartDataType[];
 }
+
+export interface OrderRequestBodyType {
+  ordersheetId: number;
+  addressId: number;
+  usedCash: number;
+  payMethod: string;
+  // "mobile" | "coupaymoney";
+  /** 'mobile' 결제에서 필수입니다. */
+  mobileCarrier?: string;
+  // "skt" | "kt" | "hello" | "kct";
+  /** 'coupaymoney' 결제에서 필수입니다. */
+  usedCoupaymoney?: number;
+}
+
+export type OrderActionType =
+  | { type: "CHANGE_ADDRESS"; value: number }
+  | { type: "CHANGE_USEDCASH"; value: number }
+  | { type: "CHANGE_PAYMETHOD"; value: string; option: any };
