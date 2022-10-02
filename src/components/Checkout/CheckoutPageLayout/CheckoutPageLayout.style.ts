@@ -16,5 +16,6 @@ export const ImageBox = styled.div`
 export const Body = styled.div`
   width: 1020px;
   margin: 0 auto;
+  margin-bottom: 50px;
   padding-left: 10px;
 `;
