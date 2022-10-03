@@ -16,6 +16,17 @@ class CheckoutService extends Service {
     return data;
   }
 
+  async getAddressListInSSR(cookie: string) {
+    const accessToken = this.getAccessTokenFromCookie(cookie);
+    if (!accessToken) {
+      return;
+    }
+    const { data } = await HttpUtil.get("/address", {
+      ...super.getAuthHeaders(accessToken),
+    });
+    return data;
+  }
+
   async completeOrder(body: OrderRequestBodyType) {
     const accessToken = TokenUtil.getToken("access");
     if (!accessToken) {
