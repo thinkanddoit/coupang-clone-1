@@ -27,7 +27,7 @@ const CheckoutPage = ({ ordersheetId, data }: PropsType) => {
     <CheckoutPageLayout>
       <OrderProvide initialState={initialState}>
         <BuyerInfo data={data.buyer} />
-        <ReceiverInfo data={data.address} />
+        <ReceiverInfo initialData={data.address} />
         <CheckoutInfo data={data} />
         <CheckoutButton />
       </OrderProvide>

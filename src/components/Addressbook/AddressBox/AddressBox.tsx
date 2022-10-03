@@ -1,5 +1,6 @@
 import { AddressType } from "@customTypes/checkout";
 import * as S from "./AddressBox.style";
+import { BroadcastChannel } from "broadcast-channel";
 
 interface PropsType {
   data: AddressType;
@@ -7,6 +8,8 @@ interface PropsType {
 }
 
 const AddressBox = ({ data, selected }: PropsType) => {
+  const channel = new BroadcastChannel<AddressType>("addressBox");
+
   return (
     <S.Container selected={selected}>
       <S.Receiver>{data.receiver}</S.Receiver>
@@ -29,7 +32,12 @@ const AddressBox = ({ data, selected }: PropsType) => {
         <S.WhiteButton onClick={() => window.alert("준비 중인 기능입니다.")}>
           수정
         </S.WhiteButton>
-        <S.BlueButton onClick={() => window.alert("준비 중인 기능입니다.")}>
+        <S.BlueButton
+          onClick={() => {
+            channel.postMessage(data);
+            window.close();
+          }}
+        >
           선택
         </S.BlueButton>
       </S.ButtonLayout>

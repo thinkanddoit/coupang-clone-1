@@ -5,11 +5,14 @@ import {
   TableRow,
   Title,
 } from "@components/Checkout/Common";
+import { useOrderDispatch } from "@components/Checkout/OrderContext";
 import * as S from "./ReceiverInfo.style";
 import Image from "next/image";
+import { BroadcastChannel } from "broadcast-channel";
+import { useState } from "react";
 
 interface PropsType {
-  data: AddressType;
+  initialData: AddressType;
 }
 
 const ShipRequestLogo = () => (
@@ -21,32 +24,49 @@ const ShipRequestLogo = () => (
   />
 );
 
-const ReceiverInfo = ({ data }: PropsType) => {
+const ReceiverInfo = ({ initialData }: PropsType) => {
+  const dispatch = useOrderDispatch();
+  const [data, setData] = useState(initialData);
+  const channel = new BroadcastChannel<AddressType>("addressBox");
+
+  const listener = (data: AddressType) => {
+    setData(data);
+    dispatch({ type: "CHANGE_ADDRESS", value: data.id });
+  };
+
+  channel.addEventListener("message", listener);
+
   return (
     <S.Container>
       <Title title="받는사람정보">
         <Button
           title="배송지변경"
           margin="0 0 0 10px"
-          onClick={() => console.log("hi")}
+          onClick={() =>
+            window.open(
+              `./addressbook?addressId=${data.id}`,
+              "쿠팡!|배송지 선택",
+              "width=510,height=647"
+            )
+          }
         />
       </Title>
       <TableLayout>
         <TableRow title="이름">
-          {data.receiver}
-          {data.isFreshAvailable && (
+          {data?.receiver}
+          {data?.isFreshAvailable && (
             <S.RocketAvailable color="#00891a" margin="0 0 0 3px">
               로켓프레시 가능
             </S.RocketAvailable>
           )}
-          {data.isWowAAvailable && (
+          {data?.isWowAAvailable && (
             <S.RocketAvailable color="#0074e9" margin="0 0 0 3px">
               로켓와우 가능
             </S.RocketAvailable>
           )}
         </TableRow>
-        <TableRow title="배송주소">{`${data.base} ${data.detail}`}</TableRow>
-        <TableRow title="연락처">{data.phoneNumber}</TableRow>
+        <TableRow title="배송주소">{`${data?.base} ${data?.detail}`}</TableRow>
+        <TableRow title="연락처">{data?.phoneNumber}</TableRow>
         <TableRow title="배송 요청사항" titleLogo={<ShipRequestLogo />}>
           <S.ShipInfoBox>
             <span>문 앞</span>
