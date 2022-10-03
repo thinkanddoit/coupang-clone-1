@@ -27,14 +27,14 @@ const ShipRequestLogo = () => (
 const ReceiverInfo = ({ initialData }: PropsType) => {
   const dispatch = useOrderDispatch();
   const [data, setData] = useState(initialData);
-  const channel = new BroadcastChannel<AddressType>("addressBox");
+  // const channel = new BroadcastChannel("addressBox");
 
-  const listener = (data: AddressType) => {
+  const listener = (data: any) => {
     setData(data);
     dispatch({ type: "CHANGE_ADDRESS", value: data.id });
   };
 
-  channel.addEventListener("message", listener);
+  // channel.addEventListener("message", listener);
 
   return (
     <S.Container>

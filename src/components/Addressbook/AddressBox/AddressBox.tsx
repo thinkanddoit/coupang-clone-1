@@ -8,7 +8,7 @@ interface PropsType {
 }
 
 const AddressBox = ({ data, selected }: PropsType) => {
-  const channel = new BroadcastChannel<AddressType>("addressBox");
+  // const channel = new BroadcastChannel("addressBox");
 
   return (
     <S.Container selected={selected}>
@@ -34,7 +34,7 @@ const AddressBox = ({ data, selected }: PropsType) => {
         </S.WhiteButton>
         <S.BlueButton
           onClick={() => {
-            channel.postMessage(data);
+            // channel.postMessage(data);
             window.close();
           }}
         >
