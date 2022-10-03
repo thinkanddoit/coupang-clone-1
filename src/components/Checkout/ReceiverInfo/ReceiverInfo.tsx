@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AddressType } from "@customTypes/checkout";
 import {
   Button,
@@ -8,8 +9,6 @@ import {
 import { useOrderDispatch } from "@components/Checkout/OrderContext";
 import * as S from "./ReceiverInfo.style";
 import Image from "next/image";
-import { BroadcastChannel } from "broadcast-channel";
-import { useState } from "react";
 
 interface PropsType {
   initialData: AddressType;
@@ -27,14 +26,14 @@ const ShipRequestLogo = () => (
 const ReceiverInfo = ({ initialData }: PropsType) => {
   const dispatch = useOrderDispatch();
   const [data, setData] = useState(initialData);
-  // const channel = new BroadcastChannel("addressBox");
 
-  const listener = (data: any) => {
-    setData(data);
-    dispatch({ type: "CHANGE_ADDRESS", value: data.id });
-  };
-
-  // channel.addEventListener("message", listener);
+  useEffect(() => {
+    const listener = (e: any) => {
+      setData(e.data);
+      dispatch({ type: "CHANGE_ADDRESS", value: data.id });
+    };
+    new BroadcastChannel("addressBox").addEventListener("message", listener);
+  }, []);
 
   return (
     <S.Container>

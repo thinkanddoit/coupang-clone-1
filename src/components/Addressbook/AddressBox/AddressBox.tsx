@@ -1,6 +1,5 @@
 import { AddressType } from "@customTypes/checkout";
 import * as S from "./AddressBox.style";
-import { BroadcastChannel } from "broadcast-channel";
 
 interface PropsType {
   data: AddressType;
@@ -8,8 +7,6 @@ interface PropsType {
 }
 
 const AddressBox = ({ data, selected }: PropsType) => {
-  // const channel = new BroadcastChannel("addressBox");
-
   return (
     <S.Container selected={selected}>
       <S.Receiver>{data.receiver}</S.Receiver>
@@ -34,7 +31,7 @@ const AddressBox = ({ data, selected }: PropsType) => {
         </S.WhiteButton>
         <S.BlueButton
           onClick={() => {
-            // channel.postMessage(data);
+            new BroadcastChannel("addressBox").postMessage(data);
             window.close();
           }}
         >
