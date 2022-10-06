@@ -11,15 +11,6 @@ const nextConfig = {
       "thumbnail10.coupangcdn.com",
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/cart",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;
