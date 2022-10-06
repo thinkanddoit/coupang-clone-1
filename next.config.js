@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: [
       "img1a.coupangcdn.com",
+      "image7.coupangcdn.com",
       "thumbnail6.coupangcdn.com",
       "thumbnail7.coupangcdn.com",
       "thumbnail8.coupangcdn.com",
