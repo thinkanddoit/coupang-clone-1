@@ -1,6 +1,6 @@
 import { Loading } from "@components/Common";
 import { useResetCartItem } from "../hooks";
-import { TokenUtil } from "@utils/index";
+import { TokenUtil } from "@utils";
 import * as S from "./EmptyCartView.style";
 import { AuthService } from "@services";
 
