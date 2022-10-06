@@ -23,7 +23,9 @@
       "@customTypes/*": ["customTypes/*"],
       "@hooks": ["hooks"],
       "@services": ["services"],
-      "@utils/*": ["utils/*"]
+      "@services": ["services"],
+      "@utils": ["utils"],
+      "@customTypes/*": ["customTypes/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
