@@ -1,5 +1,5 @@
 import { Service } from "@services";
-import { HttpUtil, TokenUtil } from "@utils/index";
+import { HttpUtil, TokenUtil } from "@utils";
 
 class AuthService extends Service {
   private setAllToken(data: any) {

@@ -1,5 +1,5 @@
 import { Service } from "@services";
-import { HttpUtil, TokenUtil } from "@utils/index";
+import { HttpUtil, TokenUtil } from "@utils";
 
 class UserService extends Service {
   async me() {
