@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/products",
-        permanent: true,
-      },
-    ];
+  images: {
+    domains: [
+      "img1a.coupangcdn.com",
+      "thumbnail6.coupangcdn.com",
+      "thumbnail7.coupangcdn.com",
+      "thumbnail8.coupangcdn.com",
+      "thumbnail9.coupangcdn.com",
+      "thumbnail10.coupangcdn.com",
+    ],
   },
 };
 

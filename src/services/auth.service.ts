@@ -1,65 +1,46 @@
-import axios from "axios";
-import cookies from "js-cookie";
+import { Service } from "@services";
+import { HttpUtil, TokenUtil } from "@utils/index";
 
-type SignupAgreements = {
-  privacy: boolean;
-  ad:
-    | {
-        email: boolean;
-        sms: boolean;
-        app: boolean;
-      }
-    | false;
-};
+class AuthService extends Service {
+  private setAllToken(data: any) {
+    TokenUtil.setToken("access", data.access, 1);
+    TokenUtil.setToken("refresh", data.refresh, 7);
+  }
 
-class AuthService {
-  /** refreshToken을 이용해 새로운 토큰을 발급받습니다. */
   async refresh() {
-    const refreshToken = cookies.get("refreshToken");
+    const refreshToken = TokenUtil.getToken("refresh");
+
     if (!refreshToken) {
       return;
     }
 
-    const { data } = await axios.post(
-      process.env.NEXT_PUBLIC_API_HOST + "/auth/refresh",
-      null,
-      {
-        headers: {
-          Authorization: `Bearer ${refreshToken}`,
-        },
-      }
-    );
+    const { data } = await HttpUtil.post("/auth/refresh", null, {
+      ...super.getAuthHeaders(refreshToken),
+    });
 
-    cookies.set("accessToken", data.access, { expires: 1 });
-    cookies.set("refreshToken", data.refresh, { expires: 7 });
+    this.setAllToken(data);
   }
 
-  /** 새로운 계정을 생성하고 토큰을 발급받습니다. */
   async signup(
     email: string,
     password: string,
     name: string,
-    phoneNumber: string,
-    agreements: SignupAgreements
+    phoneNumber: string
   ) {
-    const { data } = await axios.post(
-      process.env.NEXT_PUBLIC_API_HOST + "/auth/signup",
-      { email, password, name, phoneNumber, agreements }
-    );
+    const { data } = await HttpUtil.post("/auth/signup", {
+      email,
+      password,
+      name,
+      phoneNumber,
+    });
 
-    cookies.set("accessToken", data.access, { expires: 1 });
-    cookies.set("refreshToken", data.refresh, { expires: 7 });
+    this.setAllToken(data);
   }
 
-  /** 이미 생성된 계정의 토큰을 발급받습니다. */
   async login(email: string, password: string) {
-    const { data } = await axios.post(
-      process.env.NEXT_PUBLIC_API_HOST + "/auth/login",
-      { email, password }
-    );
+    const { data } = await HttpUtil.post("/auth/login", { email, password });
 
-    cookies.set("accessToken", data.access, { expires: 1 });
-    cookies.set("refreshToken", data.refresh, { expires: 7 });
+    this.setAllToken(data);
   }
 }
 

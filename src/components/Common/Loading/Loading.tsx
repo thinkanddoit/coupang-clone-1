@@ -1,17 +1,12 @@
 import { FadeLoader } from "react-spinners";
+import { Mordal } from "@components/Common";
 
-const Loading = () => (
-  <div
-    style={{
-      width: "100%",
-      height: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <FadeLoader color="#0073e9" height={20} />
-  </div>
-);
+const Loading = () => {
+  return (
+    <Mordal>
+      <FadeLoader color="#0175ff" />
+    </Mordal>
+  );
+};
 
 export default Loading;
