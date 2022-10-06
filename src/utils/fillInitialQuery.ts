@@ -1,6 +1,6 @@
 import { QueryTypeForGetProductDataList } from "@customTypes/products";
 
-export const fillInitialQuery = (
+const fillInitialQuery = (
   query: Partial<QueryTypeForGetProductDataList>
 ): QueryTypeForGetProductDataList => {
   const result = {
@@ -10,3 +10,5 @@ export const fillInitialQuery = (
   };
   return result;
 };
+
+export default fillInitialQuery;

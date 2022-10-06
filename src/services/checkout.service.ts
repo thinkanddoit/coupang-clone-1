@@ -1,6 +1,6 @@
 import { OrderRequestBodyType } from "@customTypes/checkout";
 import { Service } from "@services";
-import { HttpUtil, TokenUtil } from "@utils/index";
+import { HttpUtil, TokenUtil } from "@utils";
 
 class CheckoutService extends Service {
   getAccessTokenFromCookie = (cookie: string) => cookie.split(";")[0].slice(12);
